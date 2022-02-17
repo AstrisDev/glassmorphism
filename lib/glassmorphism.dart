@@ -485,6 +485,7 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
 
   /// All of the parameters below are used for the animation
   final Duration? duration;
+  final Curve? curve;
   final VoidCallback? onEnd;
 
   const GlassmorphicAnimatedContainer({
@@ -504,6 +505,7 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
     required this.linearGradient,
     required this.borderGradient,
     this.duration,
+    this.curve,
     this.onEnd,
   }) : super(key: key);
 
@@ -511,6 +513,7 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: this.duration ?? Duration(seconds: 1),
+      curve: this.curve ?? Curves.linear,
       onEnd: onEnd,
       key: key,
       width: width,
