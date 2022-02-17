@@ -293,6 +293,7 @@ class GlassmorphicContainer extends StatelessWidget {
   final double blur;
   final LinearGradient linearGradient;
   final LinearGradient borderGradient;
+
   GlassmorphicContainer({
     this.key,
     this.child,
@@ -488,7 +489,7 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
   final Curve? curve;
   final VoidCallback? onEnd;
 
-  const GlassmorphicAnimatedContainer({
+  GlassmorphicAnimatedContainer({
     this.key,
     this.alignment,
     this.padding,
@@ -498,8 +499,8 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
     this.transform,
     this.child,
     required this.borderRadius,
-    required this.shape,
-    this.constraints,
+    this.shape = BoxShape.rectangle,
+    BoxConstraints? constraints,
     required this.border,
     required this.blur,
     required this.linearGradient,
@@ -507,7 +508,12 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
     this.duration,
     this.curve,
     this.onEnd,
-  }) : super(key: key);
+  })  : assert(margin == null || margin.isNonNegative),
+        assert(padding == null || padding.isNonNegative),
+        assert(constraints == null || constraints.debugAssertIsValid()),
+        constraints = constraints?.tighten(width: width, height: height) ??
+            BoxConstraints.tightFor(width: width, height: height),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
