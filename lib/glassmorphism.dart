@@ -389,33 +389,36 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
   /// You can easily customize [borderGradient] and [linearGradient] like:
   ///! [Note] If you want to create a container with Dynamic dimentions like `height` , 'width','Size',
   ///! please user use [GlassmorphismFlexContainer]
-  ///* [GlassmorphicContainer] is only of UIs where you dont use flexibility and responsiveness [Expample link](https://github.com/RitickSaha/glassmorphism/tree/master/example/lib)
+  ///* [GlassmorphicAnimatedContainer] is only of UIs where you dont use flexibility and responsiveness [Expample link](https://github.com/RitickSaha/glassmorphism/tree/master/example/lib)
 
   /// ```dart
   /// GlassmorphicAnimatedContainer(
-  /// width: 250,
-  /// height: 250,
+  ///  duration: Duration(seconds: 1,),
+  ///  onEnd: () {},
+  ///  width: 250,
+  ///  height: 250,
   ///  borderRadius: 20,
   ///  blur: 3,
   ///  alignment: Alignment.bottomCenter,
   ///  border: 2,
   ///  linearGradient: LinearGradient(
   ///  begin: Alignment.topLeft,
-  ///      end: Alignment.bottomRight,
-  ///      colors: [
-  ///        Color(0xFFffffff).withOpacity(0.5),
-  ///        Colors.red.withOpacity(0.2),
-  ///      ],
-  ///      stops: [
-  ///        0.1,
-  ///        1,
-  ///      ]),
+  ///  end: Alignment.bottomRight,
+  ///    colors: [
+  ///      const Color(0xFFffffff).withOpacity(0.5),
+  ///      const Colors.red.withOpacity(0.2),
+  ///    ],
+  ///    stops: const [
+  ///      0.1,
+  ///      1,
+  ///    ],
+  ///  ),
   ///  borderGradient: LinearGradient(
   ///    begin: Alignment.topLeft,
   ///    end: Alignment.bottomRight,
   ///    colors: [
-  ///      Color(0xFFffffff).withOpacity(0.5),
-  ///      Colors.red.withOpacity(0.5),
+  ///      const Color(0xFFffffff).withOpacity(0.5),
+  ///      const Colors.red.withOpacity(0.5),
   ///    ],
   ///  ),
   ///  child: null
@@ -480,8 +483,12 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
   final LinearGradient linearGradient;
   final LinearGradient borderGradient;
 
+  /// All of the parameters below are used for the animation
+  final Duration? duration;
+  final VoidCallback? onEnd;
+
   const GlassmorphicAnimatedContainer({
-    Key? key,
+    this.key,
     this.alignment,
     this.padding,
     required this.width,
@@ -496,11 +503,15 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
     required this.blur,
     required this.linearGradient,
     required this.borderGradient,
+    this.duration,
+    this.onEnd,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
+      duration: this.duration ?? Duration(seconds: 1),
+      onEnd: onEnd,
       key: key,
       width: width,
       margin: margin,
