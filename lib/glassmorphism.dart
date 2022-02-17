@@ -505,21 +505,23 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
     required this.blur,
     required this.linearGradient,
     required this.borderGradient,
-    this.duration,
-    this.curve,
+    Duration? duration,
+    Curve? curve,
     this.onEnd,
   })  : assert(margin == null || margin.isNonNegative),
         assert(padding == null || padding.isNonNegative),
         assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = constraints?.tighten(width: width, height: height) ??
             BoxConstraints.tightFor(width: width, height: height),
+        duration = duration ?? Duration(seconds: 1),
+        curve = curve ?? Curves.linear,
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: this.duration ?? Duration(seconds: 1),
-      curve: this.curve ?? Curves.linear,
+      duration: duration!,
+      curve: curve!,
       onEnd: onEnd,
       key: key,
       width: width,
@@ -545,7 +547,9 @@ class GlassmorphicAnimatedContainer extends StatelessWidget {
               ),
             ),
           ),
-          GlassmorphicBorder(
+          GlassmorphicAnimatedBorder(
+            duration: duration,
+            curve: curve,
             strokeWidth: border,
             radius: borderRadius,
             width: width,
@@ -598,6 +602,58 @@ class GlassmorphicBorder extends StatelessWidget {
       painter: _painter,
       size: MediaQuery.of(context).size,
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(_radius)),
+        ),
+        width: width,
+        height: height,
+      ),
+    );
+  }
+}
+
+/// This class is responsible for creating a [gradient Animated Border] around
+/// the GlassMorphic Animated Container.
+/// You must have to change your [flutter channel] to Dev version if
+/// your want to play with it on the web. currently flutter dosen't
+/// support custom painter in
+///                [Flutter web]                       [Flutter Apps]
+///   [master] -- [  Supported   ✔ ]        :        [  Supported   ✔ ]
+///    [dev]   -- [  Supported   ✔ ]        :        [  Supported   ✔ ]
+///   [beta]   -- [  Supported   ✔ ]        :        [  Supported   ✔ ]
+///  [stable]  -- [  Supported   ✔ ]        :        [  Supported   ✔ ]
+
+class GlassmorphicAnimatedBorder extends StatelessWidget {
+  final _GradientPainter _painter;
+  final double _radius;
+  final width;
+  final height;
+  final Duration? duration;
+  final Curve? curve;
+
+  GlassmorphicAnimatedBorder({
+    required double strokeWidth,
+    required double radius,
+    required Gradient gradient,
+    this.height,
+    this.width,
+    this.duration,
+    this.curve,
+  })  : this._painter = _GradientPainter(
+          strokeWidth: strokeWidth,
+          radius: radius,
+          gradient: gradient,
+        ),
+        this._radius = radius;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: _painter,
+      size: MediaQuery.of(context).size,
+      child: AnimatedContainer(
+        duration: this.duration ?? Duration(seconds: 1),
+        curve: this.curve ?? Curves.linear,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(_radius)),
         ),
