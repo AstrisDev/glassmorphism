@@ -1,9 +1,9 @@
 name: glassmorphism
 description: A Flutter package for implimentation of Glassmorphic UI easily.
 version: 3.1.0
-homepage: "https://www.instagram.com/the.flutter.foundry/"
-repository: "https://github.com/RitickSaha/glassmorphism"
-issue_tracker: "https://github.com/RitickSaha/glassmorphism/issues"
+homepage: "https://github.com/AstrisDev/glassmorphism"
+repository: "https://github.com/AstrisDev/glassmorphism"
+issue_tracker: "https://github.com/AstrisDev/glassmorphism/issues"
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
