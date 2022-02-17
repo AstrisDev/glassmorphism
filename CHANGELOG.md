@@ -1,3 +1,7 @@
+## [3.1.0] - 18 February 2022.
+
+- Added GlassmorphicAnimatedntainer for animate glassmorphic containers.
+
 ## [3.0.0] - 26 April 2021.
 
 - Added GlassmorphicFlexContainer That makes the ui responsive.
@@ -10,9 +14,11 @@
 ## [1.0.3] - 02 January 2021.
 
 - Minor Documentation Changes.
+
 ## [1.0.1] - 02 January 2021.
 
 - Initial Publish To [`pub.dev`](https://pub.dev/packages/glassmorphism)
+
 ## [0.1.3] - 30 December 2020
 
 - Fixed GestureDetection Bug.
