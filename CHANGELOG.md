@@ -1,3 +1,7 @@
+## [3.1.2] - 03 March 2022.
+
+- Fixing constraints options in GlassmorphicFlexContainer.
+
 ## [3.1.0] - 18 February 2022.
 
 - Added GlassmorphicAnimatedntainer for animate glassmorphic containers.
