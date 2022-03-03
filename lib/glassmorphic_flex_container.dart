@@ -141,42 +141,44 @@ class GlassmorphicFlexContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      key: key,
-      alignment: alignment,
-      padding: padding,
-      constraints: constraints ?? BoxConstraints.tightForFinite(),
-      margin: margin,
-      transform: transform,
-      child: Stack(
-        children: [
-          ClipRRect(
-            clipBehavior: Clip.hardEdge,
-            borderRadius: BorderRadius.circular(borderRadius),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur * 2),
-              child: Container(
-                alignment: alignment ?? Alignment.topLeft,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(borderRadius),
-                  gradient: linearGradient,
+    return Expanded(
+      child: Container(
+        key: key,
+        alignment: alignment,
+        padding: padding,
+        constraints: constraints ?? BoxConstraints.tightForFinite(),
+        margin: margin,
+        transform: transform,
+        child: Stack(
+          children: [
+            ClipRRect(
+              clipBehavior: Clip.hardEdge,
+              borderRadius: BorderRadius.circular(borderRadius),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur * 2),
+                child: Container(
+                  alignment: alignment ?? Alignment.topLeft,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    gradient: linearGradient,
+                  ),
                 ),
               ),
             ),
-          ),
-          GlassmorphicBorder(
-            strokeWidth: border,
-            radius: borderRadius,
-            gradient: borderGradient,
-          ),
-          ClipRRect(
-            clipBehavior: Clip.hardEdge,
-            borderRadius: BorderRadius.circular(borderRadius),
-            child: Container(
-              child: child,
+            GlassmorphicBorder(
+              strokeWidth: border,
+              radius: borderRadius,
+              gradient: borderGradient,
             ),
-          ),
-        ],
+            ClipRRect(
+              clipBehavior: Clip.hardEdge,
+              borderRadius: BorderRadius.circular(borderRadius),
+              child: Container(
+                child: child,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
