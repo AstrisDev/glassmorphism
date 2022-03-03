@@ -151,8 +151,7 @@ class GlassmorphicFlexContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      fit: FlexFit.tight,
+    return Expanded(
       flex: flex!,
       child: Container(
         key: key,
