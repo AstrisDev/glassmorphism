@@ -17,7 +17,7 @@
 
 ## [2.0.1] - 26 April 2021.
 
-- Migration to Sound Null safer Version
+- Migration to Null Safety.
 
 ## [1.0.3] - 02 January 2021.
 
