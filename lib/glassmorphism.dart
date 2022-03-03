@@ -157,6 +157,7 @@ class GlassmorphicFlexContainer extends StatelessWidget {
         key: key,
         alignment: alignment,
         padding: padding,
+        constraints: constraints ?? BoxConstraints.tightForFinite(),
         margin: margin,
         transform: transform,
         child: Stack(
@@ -184,7 +185,6 @@ class GlassmorphicFlexContainer extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               borderRadius: BorderRadius.circular(borderRadius),
               child: Container(
-                constraints: constraints ?? BoxConstraints.tightForFinite(),
                 child: child,
               ),
             ),
