@@ -120,7 +120,7 @@ class GlassmorphicFlexContainer extends StatelessWidget {
   })  : assert(margin == null || margin.isNonNegative),
         assert(padding == null || padding.isNonNegative),
         assert(
-          flex! >= 1,
+          flex >= 1,
           'Flex value can be less than 1 : $flex. Please Provide a flex value > 1',
         ),
         assert(constraints == null || constraints.debugAssertIsValid()),
