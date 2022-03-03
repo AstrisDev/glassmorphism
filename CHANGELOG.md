@@ -1,3 +1,7 @@
+## [3.2.1] - 03 March 2022.
+
+- Spliting one file to multiple files with their own classes.
+
 ## [3.1.2] - 03 March 2022.
 
 - Fixing not properly working options in GlassmorphicFlexContainer.
