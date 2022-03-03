@@ -158,6 +158,7 @@ class GlassmorphicFlexContainer extends StatelessWidget {
         alignment: alignment,
         padding: padding,
         constraints: constraints ?? BoxConstraints.tightForFinite(),
+        margin: margin,
         transform: transform,
         child: Stack(
           children: [

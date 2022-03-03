@@ -1,6 +1,6 @@
 ## [3.1.2] - 03 March 2022.
 
-- Fixing constraints options in GlassmorphicFlexContainer.
+- Fixing not properly working options in GlassmorphicFlexContainer.
 
 ## [3.1.0] - 18 February 2022.
 
