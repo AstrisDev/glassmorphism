@@ -69,7 +69,7 @@ class GlassmorphicFlexContainer extends StatelessWidget {
   /// see [Decoration.padding].
   final EdgeInsetsGeometry? padding;
 
-  final int? flex;
+  final int flex;
 
   /// Empty space to surround the [decoration] and [child].
   final EdgeInsetsGeometry? margin;
@@ -146,6 +146,7 @@ class GlassmorphicFlexContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       fit: fit,
+      flex: flex,
       child: Container(
         key: key,
         alignment: alignment,
