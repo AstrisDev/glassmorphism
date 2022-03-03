@@ -109,22 +109,22 @@ class GlassmorphicFlexContainer extends StatelessWidget {
   final double blur;
   final LinearGradient linearGradient;
   final LinearGradient borderGradient;
-  GlassmorphicFlexContainer(
-      {this.key,
-      this.child,
-      this.alignment,
-      this.padding,
-      this.shape = BoxShape.rectangle,
-      this.margin,
-      this.transform,
-      required this.borderRadius,
-      required this.linearGradient,
-      required this.border,
-      required this.blur,
-      required this.borderGradient,
-      this.constraints,
-      this.flex = 1})
-      : assert(margin == null || margin.isNonNegative),
+  GlassmorphicFlexContainer({
+    this.key,
+    this.child,
+    this.alignment,
+    this.padding,
+    this.shape = BoxShape.rectangle,
+    this.margin,
+    this.transform,
+    required this.borderRadius,
+    required this.linearGradient,
+    required this.border,
+    required this.blur,
+    required this.borderGradient,
+    this.constraints,
+    this.flex = 1,
+  })  : assert(margin == null || margin.isNonNegative),
         assert(padding == null || padding.isNonNegative),
         assert(
           flex! >= 1,
@@ -151,7 +151,8 @@ class GlassmorphicFlexContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Flexible(
+      fit: FlexFit.loose,
       flex: flex!,
       child: Container(
         key: key,
